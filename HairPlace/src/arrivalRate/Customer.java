@@ -26,24 +26,30 @@ public class Customer
 		this.allResults = new double[amountOfTimes];
 		
 		randomNumber = this.randomDouble.nextDouble();
-		randomInt = (int) randomNumber * Integer.MAX_VALUE;
-		this.allResults[0] = distribution(randomInt);
+//		randomInt = (int) randomNumber * Integer.MAX_VALUE;
+		this.allResults[0] = distribution(randomNumber);
 		
 		for(int i = 1; i < this.allResults.length; i++)
 		{
 			randomNumber = this.randomDouble.nextDouble();
-			randomInt = (int) randomNumber * Integer.MAX_VALUE;
-			this.allResults[i] = distribution(randomInt);
+//			randomInt = (int) randomNumber * Integer.MAX_VALUE;
+			this.allResults[i] = distribution(randomNumber);
 			this.allResults[i] += this.allResults[i-1];
 		}
 	}
 	
-	
+/*
 	private double distribution(int randomNumber)
 	{
 		return ((Math.pow(this.lambda, randomNumber))/Factorial.factorial(randomNumber))*Math.pow(Math.E, (this.lambda * -1));
+		//((lambda^n)/(n!))*e^-lambda
 	}
-	
+*/
+	private double distribution(double randomNumber)
+	{
+		return ((1.0/this.lambda) * Math.log(1.0-randomNumber))*-1;
+	}
+
 	public void printResults(String fileName) throws IOException
 	{
 		BufferedWriter writer = new BufferedWriter(new FileWriter("..\\" + fileName + ".txt"));
