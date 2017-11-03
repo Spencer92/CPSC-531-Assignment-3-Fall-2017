@@ -42,7 +42,7 @@ public class HairPlace
 		int availableBarber = 0;
 		double arrivalTime;
 		double [] serviceTimes = new double[barbers.length];
-		double [] waitingTimes = new doube[chairs.length];
+		double [] waitingTimes = new double[chairs.length];
 		double [] barberServiceTimes = new double[barbers.length];
 		boolean nextBool;
 		
@@ -78,8 +78,9 @@ public class HairPlace
 		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
 		{
 			
-			
-			
+			//check if there is occupency in barber
+			//if there isn't, check if occupency in chair
+			//if there isn't, leave
 			
 			
 		}
