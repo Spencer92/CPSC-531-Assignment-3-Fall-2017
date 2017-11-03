@@ -33,9 +33,134 @@ public class HairPlace
 		
 	}
 	
-	public void getTimes(double [] chairs, double [] barbers, double lambda)
+	public void getTimes(double [] chairs, double [] barbers, double lambda, double mu1, double mu2)
 	{
-		double prevArrival;
+		
+		double [] barbersServiceRate = new double[barbers.length];
+		double arrival = 0;
+		double nextArrival = 0;
+		int lostCustomers = 0;
+		double lowestVal;
+		
+		for(int i = 0; i < barbers.length; i++)
+		{
+			barbers[i] = 0;
+			barbersServiceRate[i] = 0;
+		}
+		
+		for(int i = 0; i < chairs.length; i++)
+		{
+			chairs[i] = 0;
+		}
+		
+		Random randSeedOne = new Random(SEED_ONE); //used for George, initially
+		Random randSeedTwo = new Random(SEED_TWO); //used for Fred, initially
+		Random randSeedThree = new Random(SEED_THREE); //used for customers, initially
+		Random randSeedFour = new Random(SEED_FOUR); //used for booleans, initially;
+
+		
+		nextArrival = distribution(lambda, randSeedThree.nextDouble());
+		
+
+		if(randSeedFour.nextBoolean())
+		{
+			barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+			barbers[0] += nextArrival;
+		}
+		else
+		{
+			barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+			barbers[1] += nextArrival;
+		}
+		
+		nextArrival = distribution(lambda, randSeedThree.nextDouble());
+		
+		if(barbers[0] == 0)
+		{
+			barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+			barbers[0] += nextArrival;
+		}
+		else
+		{
+			barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+			barbers[1] += nextArrival;
+		}
+		
+		for(int i = 0; i < chairs.length; i++)
+		{
+			chairs[i] = distribution(lambda, randSeedThree.nextDouble());
+		}
+		
+		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
+		{
+			nextArrival = distribution(lambda, randSeedThree.nextDouble());
+			nextArrival += arrival;
+			arrival = nextArrival;
+			
+			
+			//if arrived after the last person departed, no wait
+			if((nextArrival > (longestWait(chairs) + barbers[0]))
+					&&
+					(nextArrival > (longestWait(chairs) + barbers[1])))
+			{
+				if(randSeedFour.nextBoolean())
+				{
+					barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+					barbers[0] += nextArrival;
+				}
+				else
+				{
+					barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+					barbers[1] += nextArrival;
+				}
+			}
+			else if((nextArrival > (longestWait(chairs) + barbers[0]))
+					&&
+					(nextArrival < (longestWait(chairs) + barbers[1])))
+			{
+				barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+				barbers[0] += nextArrival;
+			}
+			else if((nextArrival < (longestWait(chairs) + barbers[0]))
+					&&
+					(nextArrival > (longestWait(chairs) + barbers[1])))
+			{
+				barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+				barbers[1] += nextArrival;
+			}
+			else if((nextArrival < (longestWait(chairs) + barbers[0]))
+				&&
+				(nextArrival < (longestWait(chairs) + barbers[1])))
+			{
+				//If there isn't any seats, then it can't work
+				if(nextArrival < shortestWait(chairs))
+				{
+					lostCustomers++;
+				}
+				else
+				{
+					lowestVal = shortestWait(chairs);
+					for(int j = 0; j < chairs.length; j++)
+					{
+						if(lowestVal == chairs[j])
+						{
+							chairs[j] = lowestVal + nextArrival;
+							break;
+						}
+						
+					}
+				}
+			}
+			else
+			{
+				//Dunno yet
+			}
+			
+			
+		}
+		
+		
+		/*		double prevArrival;
 		double currArrival;
 		int availableChair = 0;
 		int customersLost = 0;
@@ -45,12 +170,14 @@ public class HairPlace
 		double [] waitingTimes = new double[chairs.length];
 		double [] barberServiceTimes = new double[barbers.length];
 		boolean nextBool;
+		double nextCustomer;
+		int totalDelay = 0;
+		int delayAmount;
 		
-		Random randSeedOne = new Random(SEED_ONE); //used for George, initially
-		Random randSeedTwo = new Random(SEED_TWO); //used for Fred, initially
-		Random randSeedThree = new Random(SEED_THREE); //used for customers, initially
-		Random randSeedFour = new Random(SEED_FOUR); //used for booleans, initially;
-	
+		
+
+		
+		
 		for(int i = 0; i < chairs.length; i++)
 		{
 			chairs[i] = 0;
@@ -75,12 +202,19 @@ public class HairPlace
 			barbers[0] = distribution(lambda, randSeedThree.nextDouble());
 		}
 		
+		for(int i = 0; i < chairs.length; i++)
+		{
+			chairs[i] = distribution(lambda, randSeedThree.nextDouble());
+		}
+		
 		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
 		{
 			
 			//check if there is occupency in barber
 			//if there isn't, check if occupency in chair
 			//if there isn't, leave
+			
+			
 			
 			
 		}
@@ -147,19 +281,31 @@ public class HairPlace
 		
 	}
 	
+	
+	
+	private double average(double [] chairs)
+	{
+		int total = 0;
+		for(int i = 0; i < chairs.length; i++)
+		{
+			total += chairs[i];
+		}
+		return total/chairs.length;
+	}
+	
 	private double distribution(double lambda, double randomNumber)
 	{
 		return ((1.0/lambda) * Math.log(1.0-randomNumber))*-1;
 	}
 	
-	double getValue(Random rand, double prevValue)
+	private double getValue(Random rand, double prevValue)
 	{
 		double val = rand.nextDouble();
 		val += prevValue;
 		return val;
 	}
 	
-	boolean allOccupied(boolean [] chairs)
+	private boolean allOccupied(boolean [] chairs)
 	{
 		for(int i = 0; i < chairs.length; i++)
 		{
@@ -171,7 +317,7 @@ public class HairPlace
 		return false;
 	}
 	
-	int goToNextChair(int availableChair, boolean [] chairs)
+	private int goToNextChair(int availableChair, boolean [] chairs)
 	{
 		for(int i = availableChair; i < chairs.length; i++)
 		{
@@ -183,7 +329,7 @@ public class HairPlace
 		return 0;
 	}
 	
-	double shortestWait(double [] barbers)
+	private double shortestWait(double [] barbers)
 	{
 		double lowest = barbers[barbers.length-1];
 		for(int i = 0; i < barbers.length-1; i++)
@@ -194,6 +340,19 @@ public class HairPlace
 			}
 		}
 		return lowest;
+	}
+	
+	private double longestWait(double [] barbers)
+	{
+		double highest = barbers[barbers.length-1];
+		for(int i = 0; i < barbers.length-1; i++)
+		{
+			if(barbers[i] > highest)
+			{
+				highest = barbers[i];
+			}
+		}
+		return highest;
 	}
 	
 	public static void main(String [] args) throws IOException
