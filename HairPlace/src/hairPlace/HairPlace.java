@@ -1,5 +1,6 @@
 package hairPlace;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Random;
 
 import arrivalRate.*;
@@ -36,21 +37,36 @@ public class HairPlace
 	public void getTimes(double [] chairs, double [] barbers, double lambda, double mu1, double mu2)
 	{
 		
-		double [] barbersServiceRate = new double[barbers.length];
+//		double [] barbersServiceRate = new double[barbers.length];
 		double arrival = 0;
-		double nextArrival = 0;
+		double arrivalTime = 0;
 		int lostCustomers = 0;
 		double lowestVal;
+		double totalDelay = 0;
+		double totalAvgDelay = 0;
+//		LinkedList<Double> serviceTimes = new LinkedList<Double>();
+//		LinkedList<Double> arrivalTimes = new LinkedList<Double>();
+//		LinkedList<double[]> chairTimes = new LinkedList<double[]>();
+		double waitLength = 0;
+		double departureTime = 0;
+		double delayAmount;
+		double [] serviceTimes = new double[barbers.length];
+		double [] sumServiceBarbers = new double[barbers.length];
+		double [] departureBarbers = new double[barbers.length];
+		double [] departureChairs = new double[chairs.length];
+		boolean waitingRoom = false;
+		
 		
 		for(int i = 0; i < barbers.length; i++)
 		{
 			barbers[i] = 0;
-			barbersServiceRate[i] = 0;
+			departureBarbers[i] = 0;
 		}
 		
 		for(int i = 0; i < chairs.length; i++)
 		{
 			chairs[i] = 0;
+			departureChairs[i] = 0;
 		}
 		
 		Random randSeedOne = new Random(SEED_ONE); //used for George, initially
@@ -58,18 +74,110 @@ public class HairPlace
 		Random randSeedThree = new Random(SEED_THREE); //used for customers, initially
 		Random randSeedFour = new Random(SEED_FOUR); //used for booleans, initially;
 
+
 		
+		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
+		{
+			arrivalTime = distribution(lambda, randSeedThree.nextDouble());
+			barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
+			barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());
+			
+			if(arrivalTime < departureBarbers[GEORGE] && arrivalTime < departureBarbers[FRED])
+			{
+				delayAmount = shortestWait(departureBarbers) - arrivalTime;
+				waitingRoom = true;
+				
+				waitLength = delayAmount + shortestWait(barbers);
+				
+				if(departureBarbers[GEORGE] < departureBarbers[FRED])
+				{
+					departureBarbers[GEORGE] = arrivalTime + waitLength;
+					totalDelay += delayAmount;
+					sumServiceBarbers[GEORGE] += barbers[GEORGE]; 
+				}
+				else if(departureBarbers[GEORGE] > departureBarbers[FRED])
+				{
+					departureBarbers[FRED] = arrivalTime + waitLength;
+					totalDelay += delayAmount;
+					sumServiceBarbers[FRED] += barbers[FRED];
+				}
+				else
+				{
+					if(randSeedFour.nextBoolean())
+					{
+						departureBarbers[GEORGE] = arrivalTime + waitLength;
+						totalDelay += delayAmount;
+						sumServiceBarbers[GEORGE] += barbers[GEORGE]; 						
+					}
+					else
+					{
+						departureBarbers[FRED] = arrivalTime + waitLength;
+						totalDelay += delayAmount;
+						sumServiceBarbers[FRED] += barbers[FRED];						
+					}
+				}
+			}
+			else if(arrivalTime < departureBarbers[GEORGE] && arrivalTime > departureBarbers[FRED])
+			{
+				delayAmount = 0;
+				waitingRoom = false;
+				
+				waitLength = barbers[FRED];
+				departureBarbers[FRED] = arrivalTime + waitLength;
+				sumServiceBarbers[FRED] += barbers[FRED];
+			}
+			else if(arrivalTime > departureBarbers[GEORGE] && arrivalTime < departureBarbers[FRED])
+			{
+				delayAmount = 0;
+				waitingRoom = false;
+				
+				waitLength = barbers[GEORGE];
+				departureBarbers[GEORGE] = arrivalTime + waitLength;
+				sumServiceBarbers[GEORGE] += barbers[GEORGE];				
+			}
+			else if(arrivalTime > departureBarbers[GEORGE] && arrivalTime > departureBarbers[FRED])
+			{
+				delayAmount = 0;
+				waitingRoom = false;
+				
+				if(randSeedFour.nextBoolean())
+				{
+					waitLength = barbers[GEORGE];
+					departureBarbers[GEORGE] = arrivalTime + waitLength;
+					sumServiceBarbers[GEORGE] += barbers[GEORGE]; 						
+				}
+				else
+				{
+					waitLength = barbers[FRED];
+					departureBarbers[FRED] = arrivalTime + waitLength;
+					sumServiceBarbers[FRED] += barbers[FRED];						
+				}
+				
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		/*		
 		nextArrival = distribution(lambda, randSeedThree.nextDouble());
 		
 
 		if(randSeedFour.nextBoolean())
 		{
 			barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+			serviceTimes.add(barbers[0]);
 			barbers[0] += nextArrival;
 		}
 		else
 		{
 			barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+			serviceTimes.add(barbers[1]);
 			barbers[1] += nextArrival;
 		}
 		
@@ -78,11 +186,13 @@ public class HairPlace
 		if(barbers[0] == 0)
 		{
 			barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+			serviceTimes.add(barbers[0]);
 			barbers[0] += nextArrival;
 		}
 		else
 		{
 			barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+			serviceTimes.add(barbers[1]);
 			barbers[1] += nextArrival;
 		}
 		
@@ -90,7 +200,17 @@ public class HairPlace
 		{
 			chairs[i] = distribution(lambda, randSeedThree.nextDouble());
 		}
+		chairTimes.add(chairs);
+*/
+
 		
+		
+		
+		
+		
+		
+		
+		/*		
 		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
 		{
 			nextArrival = distribution(lambda, randSeedThree.nextDouble());
@@ -106,11 +226,13 @@ public class HairPlace
 				if(randSeedFour.nextBoolean())
 				{
 					barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+					serviceTimes.add(barbers[0]);
 					barbers[0] += nextArrival;
 				}
 				else
 				{
 					barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+					serviceTimes.add(barbers[1]);
 					barbers[1] += nextArrival;
 				}
 			}
@@ -119,6 +241,7 @@ public class HairPlace
 					(nextArrival < (longestWait(chairs) + barbers[1])))
 			{
 				barbers[0] = distribution(mu1, randSeedOne.nextDouble());
+				serviceTimes.add(barbers[0]);
 				barbers[0] += nextArrival;
 			}
 			else if((nextArrival < (longestWait(chairs) + barbers[0]))
@@ -126,6 +249,7 @@ public class HairPlace
 					(nextArrival > (longestWait(chairs) + barbers[1])))
 			{
 				barbers[1] = distribution(mu2, randSeedTwo.nextDouble());
+				serviceTimes.add(barbers[1]);
 				barbers[1] += nextArrival;
 			}
 			else if((nextArrival < (longestWait(chairs) + barbers[0]))
@@ -139,16 +263,33 @@ public class HairPlace
 				}
 				else
 				{
+					if(shortestWait(chairs) < shortestWait(barbers))
+					{
+						delayAmount = shortestWait(barbers)-shortestWait(chairs);
+					}
+					else
+					{
+						delayAmount = 0;
+					}
+					
+					waitLength = delayAmount + serviceTime;
+					
+					
 					lowestVal = shortestWait(chairs);
 					for(int j = 0; j < chairs.length; j++)
 					{
 						if(lowestVal == chairs[j])
 						{
 							chairs[j] = lowestVal + nextArrival;
+							chairTimes.add(chairs);
 							break;
 						}
 						
 					}
+					
+
+					
+					
 				}
 			}
 			else
@@ -159,7 +300,7 @@ public class HairPlace
 			
 		}
 		
-		
+		*/
 		/*		double prevArrival;
 		double currArrival;
 		int availableChair = 0;
