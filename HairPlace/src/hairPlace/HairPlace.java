@@ -87,11 +87,121 @@ public class HairPlace
 		
 		arrivalTime = distribution(lambda, randSeedThree.nextDouble());
 		serviceTimes.add(arrivalTime);
-		barbers[FRED] = distribution(mu1,randSeedTwo.nextDouble());
-		barbers[GEORGE] = distribution(mu2,randSeedOne.nextDouble());
+		barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());
+		barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
+		
+		int noAvail = 0;
+		int bothAvail = 0;
+		int fredAvail = 0;
+		int georgeAvail = 0;
 		
 		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
 		{
+			
+			if(arrivalTime < departureBarbers[FRED] && arrivalTime < departureBarbers[GEORGE])
+			{
+				if(departureBarbers[FRED] < departureBarbers[GEORGE])
+				{
+					delayAmount = departureBarbers[FRED] - arrivalTime;
+					totalDelay += delayAmount;
+					departureBarbers[FRED] = barbers[FRED] + arrivalTime;
+					barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());					
+				}
+				else if(departureBarbers[FRED] > departureBarbers[GEORGE])
+				{
+					delayAmount = departureBarbers[GEORGE] - arrivalTime;
+					totalDelay += delayAmount;
+					departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
+					barbers[GEORGE] = distribution(mu1,randSeedTwo.nextDouble());
+					
+				}
+				else
+				{
+					if(randSeedFour.nextBoolean())
+					{
+						delayAmount = departureBarbers[FRED] - arrivalTime;
+						totalDelay += delayAmount;
+						departureBarbers[FRED] = barbers[FRED] + arrivalTime;
+						barbers[FRED] = distribution(mu2, randSeedTwo.nextDouble());
+					}
+					else
+					{
+						delayAmount = departureBarbers[FRED] - arrivalTime;
+						totalDelay += delayAmount;
+						departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
+						barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
+					}
+				}
+				
+			}
+			else if(arrivalTime >= departureBarbers[FRED] && arrivalTime >= departureBarbers[GEORGE])
+			{
+				delayAmount = 0;
+				if(randSeedFour.nextBoolean())
+				{
+					departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
+					barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
+				}
+				else
+				{
+					departureBarbers[FRED] = barbers[FRED] + arrivalTime;
+					barbers[FRED] = distribution(mu2, randSeedTwo.nextDouble());
+				}
+				bothAvail++;
+			}
+			else if(arrivalTime >= departureBarbers[FRED] && arrivalTime < departureBarbers[GEORGE])
+			{
+				delayAmount = 0;
+				departureBarbers[FRED] = barbers[FRED] + arrivalTime;
+				barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());
+				fredAvail++;
+			}
+			else if(arrivalTime < departureBarbers[FRED] && arrivalTime >= departureBarbers[GEORGE])
+			{
+				delayAmount = 0;
+				departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
+				barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
+				georgeAvail++;
+			}
+			
+			if(waitingRoom)
+			{
+				if(availableSeat(arrivalTime, chairs))
+				{
+					int openChair = getSeat(arrivalTime, chairs);
+					chairs[openChair] = arrivalTime;
+					customerLeft = false;
+				}
+				else
+				{
+					lostCustomers++;
+					customerLeft = true;
+				}
+				waitingRoom = false;
+			}
+			
+			arrivalTime = distribution(lambda,randSeedThree.nextDouble());
+			arrivalTime += serviceTimes.get(serviceTimes.size()-1);
+			
+			if(customerLeft)
+			{
+				serviceTimes.remove(serviceTimes.size()-1); //If the customer left, the customer after may still stay
+			}
+			serviceTimes.add(arrivalTime);
+			
+		}
+		
+		
+		System.out.println("Times with no availability: " + noAvail);
+		System.out.println("Times when both were available: " + bothAvail);
+		System.out.println("Times when Fred was available: " + fredAvail);
+		System.out.println("Times when george was available: " + georgeAvail);
+
+		/*
+		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
+		{
+			
+			
 //			arrivalTime = distribution(lambda, randSeedThree.nextDouble());
 //			barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
 //			barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());
@@ -221,7 +331,7 @@ public class HairPlace
 			
 			serviceTimes.add(arrivalTime);
 			
-		}
+		}*/
 		
 		System.out.println("Lost customers: " + lostCustomers);
 		
@@ -510,7 +620,29 @@ public class HairPlace
 		
 	}
 	
+	private boolean availableSeat(double arrival, double[] chairs)
+	{
+		for(int i = 0; i < chairs.length; i++)
+		{
+			if(arrival >= chairs[i])
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 	
+	private int getSeat(double arrival, double[] chairs)
+	{
+		for(int i = 0; i < chairs.length; i++)
+		{
+			if(arrival >= chairs[i])
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
 	
 	private double average(double [] chairs)
 	{
