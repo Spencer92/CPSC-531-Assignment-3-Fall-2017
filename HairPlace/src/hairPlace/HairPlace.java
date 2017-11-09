@@ -46,7 +46,6 @@ public class HairPlace
 	{
 		
 //		double [] barbersServiceRate = new double[barbers.length];
-		double arrival = 0;
 		double arrivalTime = 0;
 		int lostCustomers = 0;
 		double lowestVal;
@@ -65,6 +64,8 @@ public class HairPlace
 		boolean waitingRoom = false;
 		LinkedList<Double> serviceTimes = new LinkedList<Double>();
 		boolean customerLeft = false;
+		double savedArrival;
+		double prevArrival;
 		
 		
 		for(int i = 0; i < barbers.length; i++)
@@ -86,6 +87,9 @@ public class HairPlace
 		
 		
 		arrivalTime = distribution(lambda, randSeedThree.nextDouble());
+		savedArrival = arrivalTime;
+		prevArrival = arrivalTime;
+		
 		serviceTimes.add(arrivalTime);
 		barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());
 		barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
@@ -97,25 +101,27 @@ public class HairPlace
 		
 		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
 		{
-			
+			//Neither are available, so calculate delay
 			if(arrivalTime < departureBarbers[FRED] && arrivalTime < departureBarbers[GEORGE])
 			{
+				
+				//Fred will get customer first
 				if(departureBarbers[FRED] < departureBarbers[GEORGE])
 				{
 					delayAmount = departureBarbers[FRED] - arrivalTime;
 					totalDelay += delayAmount;
 					departureBarbers[FRED] = barbers[FRED] + arrivalTime;
 					barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());					
-				}
+				}//George gets customer first
 				else if(departureBarbers[FRED] > departureBarbers[GEORGE])
 				{
 					delayAmount = departureBarbers[GEORGE] - arrivalTime;
 					totalDelay += delayAmount;
 					departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
-					barbers[GEORGE] = distribution(mu1,randSeedTwo.nextDouble());
+					barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
 					
 				}
-				else
+				else //they finished at the same time
 				{
 					if(randSeedFour.nextBoolean())
 					{
@@ -133,43 +139,50 @@ public class HairPlace
 					}
 				}
 				
+				noAvail++;
+				waitingRoom = true;
+				
 			}
 			else if(arrivalTime >= departureBarbers[FRED] && arrivalTime >= departureBarbers[GEORGE])
 			{
 				delayAmount = 0;
 				if(randSeedFour.nextBoolean())
 				{
-					departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
-					barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
+					departureBarbers[FRED] = barbers[FRED] + arrivalTime;
+					barbers[FRED] = distribution(mu2, randSeedTwo.nextDouble());
 				}
 				else
 				{
-					departureBarbers[FRED] = barbers[FRED] + arrivalTime;
-					barbers[FRED] = distribution(mu2, randSeedTwo.nextDouble());
+					departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
+					barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
 				}
 				bothAvail++;
 			}
 			else if(arrivalTime >= departureBarbers[FRED] && arrivalTime < departureBarbers[GEORGE])
-			{
+			{//Fred is available but george is not
 				delayAmount = 0;
 				departureBarbers[FRED] = barbers[FRED] + arrivalTime;
 				barbers[FRED] = distribution(mu2,randSeedTwo.nextDouble());
 				fredAvail++;
 			}
 			else if(arrivalTime < departureBarbers[FRED] && arrivalTime >= departureBarbers[GEORGE])
-			{
+			{//George is available but Fred is not
 				delayAmount = 0;
 				departureBarbers[GEORGE] = barbers[GEORGE] + arrivalTime;
 				barbers[GEORGE] = distribution(mu1,randSeedOne.nextDouble());
 				georgeAvail++;
 			}
 			
+			
+			//Both are busy
 			if(waitingRoom)
 			{
-				if(availableSeat(arrivalTime, chairs))
+				
+				if(availableSeat(arrivalTime,departureChairs,shortestWait(barbers)))//savedArrival, chairs))
 				{
-					int openChair = getSeat(arrivalTime, chairs);
-					chairs[openChair] = arrivalTime;
+					int openChair = getSeat(arrivalTime,departureChairs,shortestWait(barbers));//savedArrival, chairs);
+					chairs[openChair] = savedArrival;
+					departureChairs[openChair] = arrivalTime;
 					customerLeft = false;
 				}
 				else
@@ -180,14 +193,20 @@ public class HairPlace
 				waitingRoom = false;
 			}
 			
-			arrivalTime = distribution(lambda,randSeedThree.nextDouble());
-			arrivalTime += serviceTimes.get(serviceTimes.size()-1);
+			//Get the value, save it, and add it to the next
 			
+			arrivalTime = distribution(lambda,randSeedThree.nextDouble());
+			savedArrival = arrivalTime;
+			arrivalTime += prevArrival;//serviceTimes.get(serviceTimes.size()-1);
+			
+			//If the customer left then they can't be put in the total delay
 			if(customerLeft)
 			{
 				serviceTimes.remove(serviceTimes.size()-1); //If the customer left, the customer after may still stay
+//				arrivalTime -= savedArrival;
 			}
-			serviceTimes.add(arrivalTime);
+			prevArrival = arrivalTime;
+			serviceTimes.add(savedArrival);
 			
 		}
 		
@@ -620,11 +639,11 @@ public class HairPlace
 		
 	}
 	
-	private boolean availableSeat(double arrival, double[] chairs)
+	private boolean availableSeat(double arrival, double[] chairs, double serviceTime)
 	{
 		for(int i = 0; i < chairs.length; i++)
 		{
-			if(arrival >= chairs[i])
+			if(arrival >= chairs[i]+serviceTime)
 			{
 				return true;
 			}
@@ -632,11 +651,11 @@ public class HairPlace
 		return false;
 	}
 	
-	private int getSeat(double arrival, double[] chairs)
+	private int getSeat(double arrival, double[] chairs, double serviceTime)
 	{
 		for(int i = 0; i < chairs.length; i++)
 		{
-			if(arrival >= chairs[i])
+			if(arrival >= chairs[i]+serviceTime)
 			{
 				return i;
 			}
