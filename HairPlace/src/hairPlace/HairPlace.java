@@ -1,4 +1,6 @@
 package hairPlace;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
@@ -42,7 +44,7 @@ public class HairPlace
 		
 	}
 	
-	public void getTimes(double [] chairs, double [] barbers, double lambda, double mu1, double mu2)
+	public void getTimes(double [] chairs, double [] barbers, double lambda, double mu1, double mu2) throws IOException
 	{
 		
 //		double [] barbersServiceRate = new double[barbers.length];
@@ -205,7 +207,7 @@ public class HairPlace
 				serviceTimes.remove(serviceTimes.size()-1); //If the customer left, the customer after may still stay
 //				arrivalTime -= savedArrival;
 			}
-			prevArrival = arrivalTime;
+//			prevArrival = arrivalTime;
 			serviceTimes.add(savedArrival);
 			
 		}
@@ -375,7 +377,15 @@ public class HairPlace
 		
 		
 		
+		BufferedWriter writer = new BufferedWriter(new FileWriter("..\\" + "bla" + ".txt"));
 		
+		for(int i = 0; i < serviceTimes.size(); i++)
+		{
+			writer.write(Double.toString(serviceTimes.get(i)) + "\r\n");
+		}
+		
+		
+		writer.close();
 		
 		
 		
