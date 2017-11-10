@@ -13,11 +13,6 @@ Percentage both were available: 15.07%
 Percentage when Fred was available: 11.01%
 Percentage when George was available: 15.86%
 Percentage of lost cutomers: 2.48%
-0.3461312215838869: mean
-0.579573767144023 mean2
-0.10974232332830525 delayAmount
-Standard deviation: 0.2761375977745052
-
 
 Results when there are 4chairs
 Two barbers
@@ -34,11 +29,6 @@ Percentage both were available: 15.07%
 Percentage when Fred was available: 11.01%
 Percentage when George was available: 15.86%
 Percentage of lost cutomers: 0.79%
-0.33931090194676605: mean
-0.579573767144023 mean2
-0.10974232332830525 delayAmount
-Standard deviation: 0.27326595899128203
-
 
 Results when there are 5chairs
 Two barbers
@@ -55,11 +45,6 @@ Percentage both were available: 15.07%
 Percentage when Fred was available: 11.01%
 Percentage when George was available: 15.86%
 Percentage of lost cutomers: 0.23%
-0.33713910777014894: mean
-0.579573767144023 mean2
-0.10974232332830525 delayAmount
-Standard deviation: 0.27250233375271243
-
 
 Results when there are 6chairs
 Two barbers
@@ -76,11 +61,6 @@ Percentage both were available: 15.07%
 Percentage when Fred was available: 11.01%
 Percentage when George was available: 15.86%
 Percentage of lost cutomers: 0.04%
-0.3365056257938803: mean
-0.579573767144023 mean2
-0.10974232332830525 delayAmount
-Standard deviation: 0.27235386928300115
-
 
 Results when there are 7chairs
 Two barbers
@@ -97,11 +77,6 @@ Percentage both were available: 15.07%
 Percentage when Fred was available: 11.01%
 Percentage when George was available: 15.86%
 Percentage of lost cutomers: 0.0%
-0.3363792149652575: mean
-0.579573767144023 mean2
-0.10974232332830525 delayAmount
-Standard deviation: 0.27227603326128796
-
 
 Results when there are 3chairs
 Two barbers
@@ -118,11 +93,6 @@ Percentage both were available: 5.04%
 Percentage when Fred was available: 6.58%
 Percentage when George was available: 4.51%
 Percentage of lost cutomers: 5.86%
-4.634646412221098: mean
-5.186983305433827 mean2
-14.479415048939245 delayAmount
-Standard deviation: 4.384929891472275
-
 
 Results when there are 4chairs
 Two barbers
@@ -139,11 +109,6 @@ Percentage both were available: 5.04%
 Percentage when Fred was available: 6.58%
 Percentage when George was available: 4.51%
 Percentage of lost cutomers: 1.99%
-4.445985690371852: mean
-5.186983305433827 mean2
-14.479415048939245 delayAmount
-Standard deviation: 4.201134800161496
-
 
 Results when there are 5chairs
 Two barbers
@@ -160,11 +125,6 @@ Percentage both were available: 5.04%
 Percentage when Fred was available: 6.58%
 Percentage when George was available: 4.51%
 Percentage of lost cutomers: 0.79%
-4.3836981210633486: mean
-5.186983305433827 mean2
-14.479415048939245 delayAmount
-Standard deviation: 4.140138186588627
-
 
 Results when there are 6chairs
 Two barbers
@@ -181,11 +141,6 @@ Percentage both were available: 5.04%
 Percentage when Fred was available: 6.58%
 Percentage when George was available: 4.51%
 Percentage of lost cutomers: 0.19%
-4.35730024001818: mean
-5.186983305433827 mean2
-14.479415048939245 delayAmount
-Standard deviation: 4.114538075384818
-
 
 Results when there are 7chairs
 Two barbers
@@ -202,11 +157,6 @@ Percentage both were available: 5.04%
 Percentage when Fred was available: 6.58%
 Percentage when George was available: 4.51%
 Percentage of lost cutomers: 0.04%
-4.350750371186886: mean
-5.186983305433827 mean2
-14.479415048939245 delayAmount
-Standard deviation: 4.108205671836185
-
 
 Results when there are 8chairs
 Two barbers
@@ -223,434 +173,259 @@ Percentage both were available: 5.04%
 Percentage when Fred was available: 6.58%
 Percentage when George was available: 4.51%
 Percentage of lost cutomers: 0.0%
-4.349115979612436: mean
-5.186983305433827 mean2
-14.479415048939245 delayAmount
-Standard deviation: 4.106651605097587
-
 
 Results when there are 3chairs
-Two barbers
-mu1 being 5.0
-mu2 being 5.0
+One barber
+mu being 5.0
 Lambda being 4.0
-Times with no availability: 552
-Times when both were available: 1166
-Times when Fred was available: 480
-Times when george was available: 463
-Lost customers: 7
-Percentage not available: 20.74%
-Percentage both were available: 43.82%
-Percentage when Fred was available: 18.04%
-Percentage when George was available: 17.4%
-Percentage of lost cutomers: 0.26%
-0.03000804105065364: mean
-0.14275564456343562 mean2
-0.0 delayAmount
-Standard deviation: 0.3384180662312726
-
+Times with no availability: 1877
+Times available: 784
+Lost customers: 53
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 1.99%
 
 Results when there are 4chairs
-Two barbers
-mu1 being 5.0
-mu2 being 5.0
+One barber
+mu being 5.0
 Lambda being 4.0
-Times with no availability: 552
-Times when both were available: 1166
-Times when Fred was available: 480
-Times when george was available: 463
-Lost customers: 1
-Percentage not available: 20.74%
-Percentage both were available: 43.82%
-Percentage when Fred was available: 18.04%
-Percentage when George was available: 17.4%
-Percentage of lost cutomers: 0.04%
-0.02965792841513604: mean
-0.14275564456343562 mean2
-0.0 delayAmount
-Standard deviation: 0.33952380472921684
-
+Times with no availability: 1877
+Times available: 784
+Lost customers: 12
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 0.45%
 
 Results when there are 5chairs
-Two barbers
-mu1 being 5.0
-mu2 being 5.0
+One barber
+mu being 5.0
 Lambda being 4.0
-Times with no availability: 552
-Times when both were available: 1166
-Times when Fred was available: 480
-Times when george was available: 463
-Lost customers: 0
-Percentage not available: 20.74%
-Percentage both were available: 43.82%
-Percentage when Fred was available: 18.04%
-Percentage when George was available: 17.4%
-Percentage of lost cutomers: 0.0%
-0.02960222231368011: mean
-0.14275564456343562 mean2
-0.0 delayAmount
-Standard deviation: 0.3400262692414337
+Times with no availability: 1877
+Times available: 784
+Lost customers: 1
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 0.04%
 
+Results when there are 6chairs
+One barber
+mu being 5.0
+Lambda being 4.0
+Times with no availability: 1877
+Times available: 784
+Lost customers: 0
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 0.0%
 
 Results when there are 3chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 351
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 13.19%
-254.5550639432473: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 254.29107739681493
-
 
 Results when there are 4chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 150
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 5.64%
-234.08526978857535: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 233.82964800307994
-
 
 Results when there are 5chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 54
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 2.03%
-225.46863409083636: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 225.21618805718185
-
 
 Results when there are 6chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 15
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 0.56%
-222.1466557268233: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 221.89574550454793
-
 
 Results when there are 7chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 3
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 0.11%
-221.14411346705575: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 220.893791725129
-
 
 Results when there are 8chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 1
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 0.04%
-220.9779021829768: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 220.7275335340282
-
 
 Results when there are 9chairs
 One barber
 mu being 3.0
 Lambda being 4.0
 Times with no availability: 2656
-Times when both were available: 5
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 5
 Lost customers: 0
 Percentage not available: 99.81%
-Percentage both were available: 0.19%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 5
 Percentage of lost cutomers: 0.0%
-220.89489019868566: mean
-221.39389973979715 mean2
-450.6874565517752 delayAmount
-Standard deviation: 220.64443878002385
-
 
 Results when there are 3chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 473
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 17.78%
-409.01113609772307: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 408.74322817917357
-
 
 Results when there are 4chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 235
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 8.83%
-368.9020918491618: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 368.64347645635985
-
 
 Results when there are 5chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 101
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 3.8%
-349.59991289258716: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 349.3460188572857
-
 
 Results when there are 6chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 36
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 1.35%
-340.9464497021766: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 340.69472317777263
-
 
 Results when there are 7chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 12
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.45%
-337.8586327992135: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 337.6078240989144
-
 
 Results when there are 8chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 5
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.19%
-336.9685272555197: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 336.71796089748807
-
 
 Results when there are 9chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 2
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.08%
-336.58848756312625: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 336.3378820151724
-
 
 Results when there are 10chairs
 One barber
 mu being 2.0
 Lambda being 4.0
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 0
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.0%
-336.33560365060697: mean
-336.58848756312625 mean2
-677.4435595258859 delayAmount
-Standard deviation: 336.08510025492143
-
 
 Results when there are 3chairs
 One barber
 mu being 5.0
 Lambda being 4.0
-Times with no availability: 1804
-Times when both were available: 857
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 60
-Percentage not available: 67.79%
-Percentage both were available: 32.21%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 2.25%
-0.3156075111024421: mean
-0.4532921625645385 mean2
-0.07059361320432345 delayAmount
-Standard deviation: 0.2666861235508808
-
+Times with no availability: 1877
+Times available: 784
+Lost customers: 53
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 1.99%
 
 Results when there are 4chairs
 One barber
 mu being 5.0
 Lambda being 4.0
-Times with no availability: 1804
-Times when both were available: 857
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 8
-Percentage not available: 67.79%
-Percentage both were available: 32.21%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 0.3%
-0.3081156975382168: mean
-0.4532921625645385 mean2
-0.07059361320432345 delayAmount
-Standard deviation: 0.26479088994968397
-
+Times with no availability: 1877
+Times available: 784
+Lost customers: 12
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 0.45%
 
 Results when there are 5chairs
 One barber
 mu being 5.0
 Lambda being 4.0
-Times with no availability: 1804
-Times when both were available: 857
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 0
-Percentage not available: 67.79%
-Percentage both were available: 32.21%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 0.0%
-0.3071897300024145: mean
-0.4532921625645385 mean2
-0.07059361320432345 delayAmount
-Standard deviation: 0.2645349165980727
+Times with no availability: 1877
+Times available: 784
+Lost customers: 1
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 0.04%
 
+Results when there are 6chairs
+One barber
+mu being 5.0
+Lambda being 4.0
+Times with no availability: 1877
+Times available: 784
+Lost customers: 0
+Percentage not available: 70.54%
+Percentage available: 29.46
+Percentage of lost cutomers: 0.0%
 
 Results when there are 3chairs
 Two barbers
@@ -667,11 +442,6 @@ Percentage both were available: 12.74%
 Percentage when Fred was available: 10.33%
 Percentage when George was available: 13.53%
 Percentage of lost cutomers: 3.53%
-0.3496534290453094: mean
-0.5258273559501778 mean2
-0.102690184540279 delayAmount
-Standard deviation: 0.25996638094781316
-
 
 Results when there are 4chairs
 Two barbers
@@ -688,11 +458,6 @@ Percentage both were available: 12.74%
 Percentage when Fred was available: 10.33%
 Percentage when George was available: 13.53%
 Percentage of lost cutomers: 0.98%
-0.33741755400834916: mean
-0.5258273559501778 mean2
-0.102690184540279 delayAmount
-Standard deviation: 0.25665258677528746
-
 
 Results when there are 5chairs
 Two barbers
@@ -709,11 +474,6 @@ Percentage both were available: 12.74%
 Percentage when Fred was available: 10.33%
 Percentage when George was available: 13.53%
 Percentage of lost cutomers: 0.23%
-0.33398748098190884: mean
-0.5258273559501778 mean2
-0.102690184540279 delayAmount
-Standard deviation: 0.2552105750203026
-
 
 Results when there are 6chairs
 Two barbers
@@ -730,11 +490,6 @@ Percentage both were available: 12.74%
 Percentage when Fred was available: 10.33%
 Percentage when George was available: 13.53%
 Percentage of lost cutomers: 0.08%
-0.3334852441684022: mean
-0.5258273559501778 mean2
-0.102690184540279 delayAmount
-Standard deviation: 0.25495748747997077
-
 
 Results when there are 7chairs
 Two barbers
@@ -751,11 +506,6 @@ Percentage both were available: 12.74%
 Percentage when Fred was available: 10.33%
 Percentage when George was available: 13.53%
 Percentage of lost cutomers: 0.04%
-0.3333599208898722: mean
-0.5258273559501778 mean2
-0.102690184540279 delayAmount
-Standard deviation: 0.2549237314756389
-
 
 Results when there are 8chairs
 Two barbers
@@ -772,11 +522,6 @@ Percentage both were available: 12.74%
 Percentage when Fred was available: 10.33%
 Percentage when George was available: 13.53%
 Percentage of lost cutomers: 0.0%
-0.33323469176857623: mean
-0.5258273559501778 mean2
-0.102690184540279 delayAmount
-Standard deviation: 0.2548860269676454
-
 
 Results when there are 3chairs
 Two barbers
@@ -793,11 +538,6 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 8.27%
-39.20302216053148: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 38.97139573489081
-
 
 Results when there are 4chairs
 Two barbers
@@ -814,11 +554,6 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 3.23%
-37.16373451708768: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 36.93905502527005
-
 
 Results when there are 5chairs
 Two barbers
@@ -835,11 +570,6 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 1.01%
-36.331605357122534: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 36.109004646291034
-
 
 Results when there are 6chairs
 Two barbers
@@ -856,11 +586,6 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 0.26%
-36.05792094765268: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 35.83564570712071
-
 
 Results when there are 7chairs
 Two barbers
@@ -877,11 +602,6 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 0.08%
-35.9901429007586: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 35.768114986113325
-
 
 Results when there are 8chairs
 Two barbers
@@ -898,11 +618,6 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 0.04%
-35.97661785645166: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 35.754539720607184
-
 
 Results when there are 9chairs
 Two barbers
@@ -919,472 +634,290 @@ Percentage both were available: 0.45%
 Percentage when Fred was available: 0.9%
 Percentage when George was available: 0.19%
 Percentage of lost cutomers: 0.0%
-35.9631029737107: mean
-36.539610731304535 mean2
-77.32353565601761 delayAmount
-Standard deviation: 35.74108310092148
-
 
 Results when there are 3chairs
-Two barbers
-mu1 being 5.0
-mu2 being 5.0
+One barber
+mu being 5.0
 Lambda being 4.5
-Times with no availability: 637
-Times when both were available: 1059
-Times when Fred was available: 480
-Times when george was available: 485
-Lost customers: 9
-Percentage not available: 23.94%
-Percentage both were available: 39.8%
-Percentage when Fred was available: 18.04%
-Percentage when George was available: 18.23%
-Percentage of lost cutomers: 0.34%
-0.03824413200283487: mean
-0.15898031639483004 mean2
-0.0 delayAmount
-Standard deviation: 0.29503989192639685
-
+Times with no availability: 2187
+Times available: 474
+Lost customers: 95
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 3.57%
 
 Results when there are 4chairs
-Two barbers
-mu1 being 5.0
-mu2 being 5.0
+One barber
+mu being 5.0
 Lambda being 4.5
-Times with no availability: 637
-Times when both were available: 1059
-Times when Fred was available: 480
-Times when george was available: 485
-Lost customers: 2
-Percentage not available: 23.94%
-Percentage both were available: 39.8%
-Percentage when Fred was available: 18.04%
-Percentage when George was available: 18.23%
-Percentage of lost cutomers: 0.08%
-0.03807160208402509: mean
-0.15898031639483004 mean2
-0.0 delayAmount
-Standard deviation: 0.2948484429834488
-
+Times with no availability: 2187
+Times available: 474
+Lost customers: 23
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.86%
 
 Results when there are 5chairs
-Two barbers
-mu1 being 5.0
-mu2 being 5.0
+One barber
+mu being 5.0
 Lambda being 4.5
-Times with no availability: 637
-Times when both were available: 1059
-Times when Fred was available: 480
-Times when george was available: 485
-Lost customers: 0
-Percentage not available: 23.94%
-Percentage both were available: 39.8%
-Percentage when Fred was available: 18.04%
-Percentage when George was available: 18.23%
-Percentage of lost cutomers: 0.0%
-0.03804299832588533: mean
-0.15898031639483004 mean2
-0.0 delayAmount
-Standard deviation: 0.294756533758494
+Times with no availability: 2187
+Times available: 474
+Lost customers: 6
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.23%
 
+Results when there are 6chairs
+One barber
+mu being 5.0
+Lambda being 4.5
+Times with no availability: 2187
+Times available: 474
+Lost customers: 1
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.04%
+
+Results when there are 7chairs
+One barber
+mu being 5.0
+Lambda being 4.5
+Times with no availability: 2187
+Times available: 474
+Lost customers: 0
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.0%
 
 Results when there are 3chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 420
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 15.78%
-305.3054212934728: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 305.06844383804605
-
 
 Results when there are 4chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 196
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 7.37%
-277.57289316300324: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 277.34406394907404
-
 
 Results when there are 5chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 81
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 3.04%
-265.20525166213326: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 264.9803421861415
-
 
 Results when there are 6chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 29
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 1.09%
-259.96762420811467: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 259.743882082062
-
 
 Results when there are 7chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 10
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.38%
-258.1051110633356: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 257.8822673170922
-
 
 Results when there are 8chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 4
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.15%
-257.52248101578857: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 257.2998254222213
-
 
 Results when there are 9chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 1
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.04%
-257.2321512739444: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 257.00953610582565
-
 
 Results when there are 10chairs
 One barber
 mu being 3.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 0
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.0%
-257.13552011268445: mean
-257.32885509021276 mean2
-523.8950349187802 delayAmount
-Standard deviation: 256.91286480532483
-
 
 Results when there are 3chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 542
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 20.37%
-468.8355461578648: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 468.59594097875174
-
 
 Results when there are 4chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 287
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 10.79%
-418.4974138335467: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 418.26620795571034
-
 
 Results when there are 5chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 140
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 5.26%
-394.10442420883163: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 393.87825714486456
-
 
 Results when there are 6chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 59
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 2.22%
-381.8407060525061: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 381.6165162677623
-
 
 Results when there are 7chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 22
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.83%
-376.4891507025278: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 376.26609908062795
-
 
 Results when there are 8chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 8
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.3%
-374.50314915398394: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 374.2803973699633
-
 
 Results when there are 9chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 4
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.15%
-373.93956277451974: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 373.716767102763
-
 
 Results when there are 10chairs
 One barber
 mu being 2.0
 Lambda being 4.5
 Times with no availability: 2660
-Times when both were available: 1
-Times when Fred was available: 0
-Times when george was available: 0
+Times available: 1
 Lost customers: 1
 Percentage not available: 99.96%
-Percentage both were available: 0.04%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
+Percentage available: 1
 Percentage of lost cutomers: 0.04%
-373.51798491344357: mean
-373.65840520852385 mean2
-751.4680164118944 delayAmount
-Standard deviation: 373.2952399861525
-
 
 Results when there are 3chairs
 One barber
 mu being 5.0
 Lambda being 4.5
-Times with no availability: 2001
-Times when both were available: 660
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 89
-Percentage not available: 75.2%
-Percentage both were available: 24.8%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 3.34%
-0.4523314474820583: mean
-0.5786949053243724 mean2
-0.0873979647124088 delayAmount
-Standard deviation: 0.32383930107768805
-
+Times with no availability: 2187
+Times available: 474
+Lost customers: 95
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 3.57%
 
 Results when there are 4chairs
 One barber
 mu being 5.0
 Lambda being 4.5
-Times with no availability: 2001
-Times when both were available: 660
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 18
-Percentage not available: 75.2%
-Percentage both were available: 24.8%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 0.68%
-0.4379608568661381: mean
-0.5786949053243724 mean2
-0.0873979647124088 delayAmount
-Standard deviation: 0.3145675425414769
-
+Times with no availability: 2187
+Times available: 474
+Lost customers: 23
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.86%
 
 Results when there are 5chairs
 One barber
 mu being 5.0
 Lambda being 4.5
-Times with no availability: 2001
-Times when both were available: 660
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 2
-Percentage not available: 75.2%
-Percentage both were available: 24.8%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 0.08%
-0.43532650584739446: mean
-0.5786949053243724 mean2
-0.0873979647124088 delayAmount
-Standard deviation: 0.31294370618994777
-
+Times with no availability: 2187
+Times available: 474
+Lost customers: 6
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.23%
 
 Results when there are 6chairs
 One barber
 mu being 5.0
 Lambda being 4.5
-Times with no availability: 2001
-Times when both were available: 660
-Times when Fred was available: 0
-Times when george was available: 0
-Lost customers: 0
-Percentage not available: 75.2%
-Percentage both were available: 24.8%
-Percentage when Fred was available: 0.0%
-Percentage when George was available: 0.0%
-Percentage of lost cutomers: 0.0%
-0.4349994386003265: mean
-0.5786949053243724 mean2
-0.0873979647124088 delayAmount
-Standard deviation: 0.31274305314667605
+Times with no availability: 2187
+Times available: 474
+Lost customers: 1
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.04%
 
+Results when there are 7chairs
+One barber
+mu being 5.0
+Lambda being 4.5
+Times with no availability: 2187
+Times available: 474
+Lost customers: 0
+Percentage not available: 82.19%
+Percentage available: 17.81
+Percentage of lost cutomers: 0.0%
 

@@ -1,11 +1,7 @@
 package hairPlace;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
-
-import arrivalRate.*;
 
 
 public class HairPlace 
@@ -16,11 +12,24 @@ public class HairPlace
 	public static final int SEED_FOUR = 40093;
 	
 	private static final int AMOUNT_OF_TIMES = 2661;
-//	private static final int GEORGE = 0;
-//	private static final int FRED = 1;
 	
 	
 	public HairPlace(String [] args) throws IOException
+	{
+		double mu1 = Double.parseDouble(args[0]);
+		double mu2 = Double.parseDouble(args[1]);
+		double lambda = Double.parseDouble(args[2]);
+		double [] chairs = new double[Integer.parseInt(args[3])];
+		double [] barbers = new double[2];
+		
+		
+		getTimes(chairs,barbers,lambda,mu1,mu2,1,0);
+		
+		
+		
+	}
+	
+	public HairPlace() throws IOException
 	{
 //		Barber fred = new Barber(3.0, SEED_ONE);
 //		Barber george = new Barber(2.0, SEED_TWO);
@@ -99,20 +108,10 @@ public class HairPlace
 	public int getTimes(double [] chairs, double [] barbers, double lambda, double mu1, double mu2, int fred, int george) throws IOException
 	{
 		
-//		double [] barbersServiceRate = new double[barbers.length];
 		double arrivalTime = 0;
 		int lostCustomers = 0;
-		double lowestVal;
 		double totalDelay = 0;
-		double totalAvgDelay = 0;
-//		LinkedList<Double> serviceTimes = new LinkedList<Double>();
-//		LinkedList<Double> arrivalTimes = new LinkedList<Double>();
-//		LinkedList<double[]> chairTimes = new LinkedList<double[]>();
-		double waitLength = 0;
-		double departureTime = 0;
 		double delayAmount = 0;
-//		double [] serviceTimes = new double[barbers.length];
-		double [] sumServiceBarbers = new double[barbers.length];
 		double [] departureBarbers = new double[barbers.length];
 		double [] departureChairs = new double[chairs.length];
 		boolean waitingRoom = false;
@@ -121,11 +120,14 @@ public class HairPlace
 		double savedArrival;
 		double prevArrival;
 		LinkedList<Double> delays = new LinkedList<Double>();
-		BufferedWriter writer = new BufferedWriter(new FileWriter("..\\" + "chart" + ".xlsx"));
-
+		
+		Random randSeedOne = new Random(SEED_ONE); //used for George, initially
+		Random randSeedTwo = new Random(SEED_TWO); //used for Fred, initially
+		Random randSeedThree = new Random(SEED_THREE); //used for customers, initially
+		Random randSeedFour = new Random(SEED_FOUR); //used for booleans, initially;	
 		if(mu2 == 0.0)
 		{
-			
+			return getTimesSingle(chairs,barbers[0],lambda,mu1,randSeedOne,randSeedThree,randSeedFour);
 		}
 		
 		System.out.println("Results when there are " + chairs.length + "chairs");
@@ -154,10 +156,7 @@ public class HairPlace
 			departureChairs[i] = 0;
 		}
 		
-		Random randSeedOne = new Random(SEED_ONE); //used for George, initially
-		Random randSeedTwo = new Random(SEED_TWO); //used for Fred, initially
-		Random randSeedThree = new Random(SEED_THREE); //used for customers, initially
-		Random randSeedFour = new Random(SEED_FOUR); //used for booleans, initially;
+
 		
 		
 		arrivalTime = distribution(lambda, randSeedThree.nextDouble());
@@ -266,20 +265,30 @@ public class HairPlace
 			}
 			else if(arrivalTime >= departureBarbers[fred] && arrivalTime < departureBarbers[george])
 			{//Fred is available but george is not
-				if(fred == 0)
-				{
-					System.out.print("");
-				}
 					
 				delayAmount = 0;
-				departureBarbers[fred] = barbers[fred] + arrivalTime;
+				if(departureBarbers[fred] <= barbers[fred] + arrivalTime)
+				{
+					departureBarbers[fred] = barbers[fred] + arrivalTime;
+				}
+				else
+				{
+					departureBarbers[fred] += barbers[fred];
+				}
 				barbers[fred] = distribution(mu2,randSeedTwo.nextDouble());
 				fredAvail++;
 			}
 			else if(arrivalTime < departureBarbers[fred] && arrivalTime >= departureBarbers[george])
 			{//George is available but Fred is not
 				delayAmount = 0;
-				departureBarbers[george] = barbers[george] + arrivalTime;
+				if(departureBarbers[george] <= barbers[george]+arrivalTime)
+				{
+					departureBarbers[george] = barbers[george] + arrivalTime;
+				}
+				else
+				{
+					departureBarbers[george] += barbers[george];
+				}
 				barbers[george] = distribution(mu1,randSeedOne.nextDouble());
 				georgeAvail++;
 			}
@@ -355,52 +364,7 @@ public class HairPlace
 		{
 			System.out.println("Percentage of lost cutomers: " + round(lostCustomers) + "%");
 		}
-/*
-		
-		
-		double mean = totalDelay/serviceTimes.size();
-		double mean2 = totalDelay/delays.size();
-		double [] adjustedTimes = new double[serviceTimes.size()];
-		double adjustedTotal = 0;
-		
-		for(int i = 0; i < adjustedTimes.length; i++)
-		{
-			adjustedTimes[i] = serviceTimes.get(i) - mean;
-			adjustedTimes[i] *= adjustedTimes[i];
-			adjustedTotal += adjustedTimes[i];
-		}
-		
-		
-		double standardDeviation = adjustedTotal/adjustedTimes.length;
-		standardDeviation = Math.sqrt(standardDeviation);
-		
-		System.out.println(mean + ": mean");
-		System.out.println(mean2 + " mean2");
-		System.out.println(delayAmount + " delayAmount");
-		System.out.println("Standard deviation: " + standardDeviation + "\n");
-		
-		
-		
-		BufferedWriter writer = new BufferedWriter(new FileWriter("..\\" + "bla" + ".txt"));
-		
-		for(int i = 0; i < serviceTimes.size(); i++)
-		{
-			writer.write(Double.toString(serviceTimes.get(i)) + "\r\n");
-		}
-		
-		
-		writer.close();
-		
-		
-		writer = new BufferedWriter(new FileWriter("..\\" + "bla2" + ".txt"));
-		
-		for(int i = 0; i < delays.size(); i++)
-		{
-			writer.write(Double.toString(delays.get(i)) + "\r\n");
-		}
-		
-		
-		writer.close();*/
+
 		
 		System.out.println();
 		
@@ -409,23 +373,14 @@ public class HairPlace
 		
 	}
 	
-	public int getTimesSingle(double [] chairs, double barber, double lambda, double mu) throws IOException
+	public int getTimesSingle(double [] chairs, double barber, double lambda, double mu,Random randSeedOne,Random randSeedThree,Random randSeedFour) throws IOException
 	{
 		
 //		double [] barbersServiceRate = new double[barbers.length];
 		double arrivalTime = 0;
 		int lostCustomers = 0;
-		double lowestVal;
 		double totalDelay = 0;
-		double totalAvgDelay = 0;
-//		LinkedList<Double> serviceTimes = new LinkedList<Double>();
-//		LinkedList<Double> arrivalTimes = new LinkedList<Double>();
-//		LinkedList<double[]> chairTimes = new LinkedList<double[]>();
-		double waitLength = 0;
-		double departureTime = 0;
 		double delayAmount = 0;
-//		double [] serviceTimes = new double[barbers.length];
-//		double [] sumServiceBarbers = new double[barbers.length];
 		double departureBarber;
 		double [] departureChairs = new double[chairs.length];
 		boolean waitingRoom = false;
@@ -434,7 +389,6 @@ public class HairPlace
 		double savedArrival;
 		double prevArrival;
 		LinkedList<Double> delays = new LinkedList<Double>();
-		BufferedWriter writer = new BufferedWriter(new FileWriter("..\\" + "chart" + ".xlsx"));
 
 		
 		System.out.println("Results when there are " + chairs.length + "chairs");
@@ -451,11 +405,6 @@ public class HairPlace
 			departureChairs[i] = 0;
 		}
 		
-		Random randSeedOne = new Random(SEED_ONE); //used for George, initially
-		Random randSeedTwo = new Random(SEED_TWO); //used for Fred, initially
-		Random randSeedThree = new Random(SEED_THREE); //used for customers, initially
-		Random randSeedFour = new Random(SEED_FOUR); //used for booleans, initially;
-		
 		
 		arrivalTime = distribution(lambda, randSeedThree.nextDouble());
 		savedArrival = arrivalTime;
@@ -465,9 +414,6 @@ public class HairPlace
 		barber = distribution(mu,randSeedOne.nextDouble());
 		
 		int noAvail = 0;
-		int bothAvail = 0;
-		int fredAvail = 0;
-		int georgeAvail = 0;
 		
 		for(int i = 0; i < AMOUNT_OF_TIMES; i++)
 		{
@@ -486,45 +432,25 @@ public class HairPlace
 				{
 					departureBarber += barber;
 				}
-					barber = distribution(mu,randSeedTwo.nextDouble());					
+				barber = distribution(mu,randSeedOne.nextDouble());					
 				noAvail++;
 				waitingRoom = true;
 				
 			}
-/*			else if(arrivalTime >= departureBarbers[fred] && arrivalTime >= departureBarbers[george])
+			else
 			{
 				delayAmount = 0;
-				if(randSeedFour.nextBoolean())
+				if(departureBarber <= barber + arrivalTime)
 				{
-					departureBarbers[fred] = barbers[fred] + arrivalTime;
-					barbers[fred] = distribution(mu2, randSeedTwo.nextDouble());
+					departureBarber = barber + arrivalTime;
 				}
 				else
 				{
-					departureBarbers[george] = barbers[george] + arrivalTime;
-					barbers[george] = distribution(mu1,randSeedOne.nextDouble());
+					departureBarber += barber;
 				}
-				bothAvail++;
+				barber = distribution(mu,randSeedOne.nextDouble());
+				waitingRoom = false;
 			}
-			else if(arrivalTime >= departureBarbers[fred] && arrivalTime < departureBarbers[george])
-			{//Fred is available but george is not
-				if(fred == 0)
-				{
-					System.out.print("");
-				}
-					
-				delayAmount = 0;
-				departureBarbers[fred] = barbers[fred] + arrivalTime;
-				barbers[fred] = distribution(mu2,randSeedTwo.nextDouble());
-				fredAvail++;
-			}
-			else if(arrivalTime < departureBarbers[fred] && arrivalTime >= departureBarbers[george])
-			{//George is available but Fred is not
-				delayAmount = 0;
-				departureBarbers[george] = barbers[george] + arrivalTime;
-				barbers[george] = distribution(mu1,randSeedOne.nextDouble());
-				georgeAvail++;
-			}*/
 			
 			
 			//Both are busy
@@ -543,7 +469,6 @@ public class HairPlace
 					lostCustomers++;
 					customerLeft = true;
 				}
-				waitingRoom = false;
 			}
 			
 			//Get the value, save it, and add it to the next
@@ -556,7 +481,6 @@ public class HairPlace
 			if(customerLeft)
 			{
 				serviceTimes.remove(serviceTimes.size()-1); //If the customer left, the customer after may still stay
-//				arrivalTime -= savedArrival;
 			}
 			prevArrival = arrivalTime;
 			serviceTimes.add(savedArrival);
@@ -565,12 +489,12 @@ public class HairPlace
 		
 		
 		System.out.println("Times with no availability: " + noAvail);
-		System.out.println("Times available: " + (1-noAvail));
+		System.out.println("Times available: " + (AMOUNT_OF_TIMES-noAvail));
 		System.out.println("Lost customers: " + lostCustomers);
 		
 		
 		System.out.println("Percentage not available: " + round(noAvail) + "%");
-		System.out.println("Percentage available: " + bothAvail);
+		System.out.println("Percentage available: " + round(AMOUNT_OF_TIMES-noAvail) + "%");
 		if(round(lostCustomers) < 0.00)
 		{
 			System.out.println("Percentage of lost customers: negligible");
@@ -579,52 +503,6 @@ public class HairPlace
 		{
 			System.out.println("Percentage of lost cutomers: " + round(lostCustomers) + "%");
 		}
-/*
-		
-		
-		double mean = totalDelay/serviceTimes.size();
-		double mean2 = totalDelay/delays.size();
-		double [] adjustedTimes = new double[serviceTimes.size()];
-		double adjustedTotal = 0;
-		
-		for(int i = 0; i < adjustedTimes.length; i++)
-		{
-			adjustedTimes[i] = serviceTimes.get(i) - mean;
-			adjustedTimes[i] *= adjustedTimes[i];
-			adjustedTotal += adjustedTimes[i];
-		}
-		
-		
-		double standardDeviation = adjustedTotal/adjustedTimes.length;
-		standardDeviation = Math.sqrt(standardDeviation);
-		
-		System.out.println(mean + ": mean");
-		System.out.println(mean2 + " mean2");
-		System.out.println(delayAmount + " delayAmount");
-		System.out.println("Standard deviation: " + standardDeviation + "\n");
-		
-		
-		
-		BufferedWriter writer = new BufferedWriter(new FileWriter("..\\" + "bla" + ".txt"));
-		
-		for(int i = 0; i < serviceTimes.size(); i++)
-		{
-			writer.write(Double.toString(serviceTimes.get(i)) + "\r\n");
-		}
-		
-		
-		writer.close();
-		
-		
-		writer = new BufferedWriter(new FileWriter("..\\" + "bla2" + ".txt"));
-		
-		for(int i = 0; i < delays.size(); i++)
-		{
-			writer.write(Double.toString(delays.get(i)) + "\r\n");
-		}
-		
-		
-		writer.close();*/
 		
 		System.out.println();
 		
@@ -666,51 +544,13 @@ public class HairPlace
 		return -1;
 	}
 	
-	private double average(double [] chairs)
-	{
-		int total = 0;
-		for(int i = 0; i < chairs.length; i++)
-		{
-			total += chairs[i];
-		}
-		return total/chairs.length;
-	}
+
 	
 	private double distribution(double lambda, double randomNumber)
 	{
 		return ((1.0/lambda) * Math.log(1.0-randomNumber))*-1;
 	}
-	
-	private double getValue(Random rand, double prevValue)
-	{
-		double val = rand.nextDouble();
-		val += prevValue;
-		return val;
-	}
-	
-	private boolean allOccupied(boolean [] chairs)
-	{
-		for(int i = 0; i < chairs.length; i++)
-		{
-			if(chairs[i])
-			{
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	private int goToNextChair(int availableChair, boolean [] chairs)
-	{
-		for(int i = availableChair; i < chairs.length; i++)
-		{
-			if(chairs[i])
-			{
-				return i;
-			}
-		}
-		return 0;
-	}
+
 	
 	private double shortestWait(double [] barbers, int fred, int george)
 	{
@@ -736,34 +576,17 @@ public class HairPlace
 		}
 	}
 	
-	private double shortestWaitChairs(double [] chairs)
-	{
-		double lowest = chairs[chairs.length-1];
-		for(int i = 0; i < chairs.length-1; i++)
-		{
-			if(chairs[i] < lowest)
-			{
-				lowest = chairs[i];
-			}
-		}
-		return lowest;
-	}
-	
-	private double longestWait(double [] barbers)
-	{
-		double highest = barbers[barbers.length-1];
-		for(int i = 0; i < barbers.length-1; i++)
-		{
-			if(barbers[i] > highest)
-			{
-				highest = barbers[i];
-			}
-		}
-		return highest;
-	}
+
 	
 	public static void main(String [] args) throws IOException
 	{
-		new HairPlace(args);
+		if(args.length < 1)
+		{
+			new HairPlace();
+		}
+		else
+		{
+			new HairPlace(args);
+		}
 	}
 }
