@@ -43,7 +43,7 @@ public class HairPlace
 		double [] mu1 = {3.0,2.0,2.5,5.0};
 		double [] mu2 = {2.0,2.0,2.5,0.0};
 		
-		
+		//Goes through all the predetermined values
 		for(int i = 0; i < lambda.length; i++)
 		{
 			for(int j = 0; j < george.length; j++)
